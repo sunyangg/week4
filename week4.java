@@ -138,7 +138,7 @@ class Player
 		{
 			if((sum+(i-j)*10+j*1)<=21)
 			{
-				sum=sum+(i-j)*10+j*1;
+				sum=sum+(i-j)*11+j*1;
 				break;
 			}
 		}
@@ -168,11 +168,26 @@ class Banker
 	ArrayList<Card> cards=new ArrayList<Card>();
 	public int points()
 	{
-		int sum=0;
+		int sum=0,i=0,j=0;
 		for(Card c:cards)
 		{
-			sum+=c.getPoint();
+			if(c.getPoint()>1 && c.getPoint()<10)
+				sum+=c.getPoint();
+			else if(c.getPoint()>=10)
+				sum+=10;
+			else
+				i++;
 		}
+		for(j=0;j<i;j++)
+		{
+			if((sum+(i-j)*10+j*1)<=21)
+			{
+				sum=sum+(i-j)*11+j*1;
+				break;
+			}
+		}
+		if(j>=i && i!=0)
+			sum=sum+i*1;
 		return sum;
 	}
 	public void add(Card c)
