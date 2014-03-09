@@ -46,6 +46,7 @@ public class week4
 				}
 				System.out.print("------------------------------------\n");
 				player.add(deck.deal());
+				player.add(deck.deal());
 				while(true)
 				{
 					System.out.print("\n玩家手上的牌為: ");
